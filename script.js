@@ -16,32 +16,40 @@ field.addEventListener('change', function () {
   }
   //print month & year
   var month = this.value;
+  var monthNum = months.indexOf(month);
   var year = new Date().getFullYear();
-  var date = month + " " + year
-  document.getElementById("month").innerHTML = date;
+  document.getElementById("month").innerHTML = month + " " + year;
   //get first day of week
-  var firstDay = new Date(date).getDay();
+  firstDay = new Date(year, monthNum).getDay();
   //get max days in month
-  var lastDay = new Date(year, months.indexOf(month)+1, 0).getDate();
+  var lastDay = new Date(year, monthNum+1, 0).getDate();
   //print calendar days
 
   var weeks = document.getElementById("weeks");
   day = 1;
-  for (let i = 0; i < lastDay; i++) {
+  squares = 0;
+  for (let i = 0; i < firstDay+lastDay; i++) {
     if (i % 7 == 0) {
       var week = document.createElement("div");
       week.classList.add('flex-container');
       weeks.appendChild(week);
     }
     var square = document.createElement("div");
-    if (day >= firstDay) {
+    if (i >= firstDay) {
       square.innerHTML = day;
+      day++;
     }
     else {
       square.innerHTML = "";
-      day++;
     }
     week.appendChild(square);
+    squares++;
+  }
+  while (squares % 7 != 0) {
+    square = document.createElement("div");
+    square.innerHTML = "";
+    week.appendChild(square);
+    squares++;
   }
 
 });
