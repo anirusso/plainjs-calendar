@@ -1,10 +1,22 @@
+body {
+  font-family: 'IBM Plex Serif', serif;
+}
+
+form {
+  border: 1px solid black;
+  padding: .5%;
+  margin: .5%;
+}
+
 h1 {
   text-align: center;
-  background: grey;
+  background: #e1d6d6;
   width: 100%;
-  max-width: 730px;
+  max-width: 1256px;
   margin: 5px;
   padding: 15px;
+  height: 40px;
+  max-height: 40px;
 }
 
 .flex-container {
@@ -15,18 +27,19 @@ h1 {
 
 .flex-container>div {
   background-color: #f1f1f1;
-  width: 100px;
+  width: 175px;
   margin: 5px;
   text-align: center;
   line-height: 75px;
 }
 
-div:hover {
-  background-color: lightgrey;
-}
-
 #weekdays>div {
   font-weight: bold;
   line-height: 50px;
-  font-size: 70%;
+  font-size: 80%;
+}
+
+#weeks>div>div:hover {
+  background-color: lightgrey;
+  color: red;
 }
