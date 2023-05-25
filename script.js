@@ -24,12 +24,12 @@ field.addEventListener('change', function () {
   //get max days in month
   var lastDay = new Date(year, monthNum+1, 0).getDate();
   //print calendar days
-
   var weeks = document.getElementById("weeks");
   day = 1;
   squares = 0;
   for (let i = 0; i < firstDay+lastDay; i++) {
     if (i % 7 == 0) {
+      //create week row
       var week = document.createElement("div");
       week.classList.add('flex-container');
       weeks.appendChild(week);
@@ -38,6 +38,7 @@ field.addEventListener('change', function () {
     if (i >= firstDay) {
       square.innerHTML = day;
       day++;
+      square.classList.add('day');
     }
     else {
       square.innerHTML = "";
@@ -52,4 +53,11 @@ field.addEventListener('change', function () {
     squares++;
   }
 
+  let days = document.getElementsByClassName("day");
+  for (let day of days) {
+    day.addEventListener('click', function () {
+      let e = prompt("Enter event for the day: ");
+      day.innerHTML = day.innerHTML + "<br>" + e;
+    });
+  }
 });
