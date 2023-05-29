@@ -53,11 +53,24 @@ field.addEventListener('change', function () {
     squares++;
   }
 
+  //add event to day
   let days = document.getElementsByClassName("day");
   for (let day of days) {
     day.addEventListener('click', function () {
       let e = prompt("Enter event for the day: ");
-      day.innerHTML = day.innerHTML + "<br>" + e;
+      if (e) {
+        let newEvent = document.createElement("div");
+        newEvent.classList.add('event');
+        newEvent.innerHTML = e;
+        //delete event
+        newEvent.addEventListener('click', function() {
+          let del = confirm("Delete?");
+          if (del) {
+            newEvent.innerHTML = "";
+          }
+        })
+        day.appendChild(newEvent);
+      }
     });
   }
 });
