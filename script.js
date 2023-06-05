@@ -1,6 +1,27 @@
+let addEvent = (day) => {
+  let event = prompt("Enter event for the day: ");
+  if (event) {
+    let newEvent = document.createElement("div");
+    newEvent.classList.add('event');
+    newEvent.innerHTML = event;
+    newEvent.addEventListener('click', function(e) {
+      deleteEvent(this);
+      e.stopPropagation();
+    });
+    day.appendChild(newEvent);
+  }
+}
+
+let deleteEvent = (day) => {
+  let del = confirm("Delete event?");
+  if (del) {
+    day.remove();
+  }
+}
+
+//create dropdown list of months
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var select = document.getElementById("selectMonth");
-
 months.forEach(function (item, index) {
   var opt = document.createElement("option");
   opt.textContent = item;
@@ -8,6 +29,7 @@ months.forEach(function (item, index) {
   select.appendChild(opt);
 });
 
+//populate calendar with days
 let field = document.querySelector('#selectMonth');
 field.addEventListener('change', function () {
   const myNode = document.getElementById("weeks");
@@ -46,6 +68,7 @@ field.addEventListener('change', function () {
     week.appendChild(square);
     squares++;
   }
+
   while (squares % 7 != 0) {
     square = document.createElement("div");
     square.innerHTML = "";
@@ -56,21 +79,8 @@ field.addEventListener('change', function () {
   //add event to day
   let days = document.getElementsByClassName("day");
   for (let day of days) {
-    day.addEventListener('click', function () {
-      let e = prompt("Enter event for the day: ");
-      if (e) {
-        let newEvent = document.createElement("div");
-        newEvent.classList.add('event');
-        newEvent.innerHTML = e;
-        //delete event
-        newEvent.addEventListener('click', function() {
-          let del = confirm("Delete?");
-          if (del) {
-            newEvent.innerHTML = "";
-          }
-        })
-        day.appendChild(newEvent);
-      }
+    day.addEventListener('click', function(e) {
+      addEvent(this);
     });
   }
 });
