@@ -50,11 +50,11 @@ h1 {
 }
 
 .event {
-  height: 20px;
+  height: 3em;
   padding: 2%;
+  overflow: auto;
 }
 
 .event:hover {
   background-color: #f1f1f1;
-  
 }
