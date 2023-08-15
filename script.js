@@ -1,14 +1,17 @@
 let addEvent = (day) => {
-  let event = prompt("Enter event for the day: ");
-  if (event) {
-    let newEvent = document.createElement("div");
-    newEvent.classList.add('event');
-    newEvent.innerHTML = event;
-    newEvent.addEventListener('click', function(e) {
-      deleteEvent(this);
-      e.stopPropagation();
-    });
-    day.appendChild(newEvent);
+  let num = day.childElementCount
+  if (num <= 2) {
+    let event = prompt("Enter event for the day: ");
+    if (event) {
+      let newEvent = document.createElement("div");
+      newEvent.classList.add('event');
+      newEvent.innerHTML = event;
+      newEvent.addEventListener('click', function(e) {
+        deleteEvent(this);
+        e.stopPropagation();
+      });
+      day.appendChild(newEvent);
+    }
   }
 }
 
@@ -58,8 +61,10 @@ field.addEventListener('change', function () {
     }
     var square = document.createElement("div");
     if (i >= firstDay) {
-      square.innerHTML = day;
+      var num = document.createElement("p");
+      num.innerHTML = day;
       day++;
+      square.appendChild(num);
       square.classList.add('day');
     }
     else {
@@ -71,7 +76,6 @@ field.addEventListener('change', function () {
 
   while (squares % 7 != 0) {
     square = document.createElement("div");
-    square.innerHTML = "";
     week.appendChild(square);
     squares++;
   }
