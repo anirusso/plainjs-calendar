@@ -12,23 +12,27 @@ h1 {
   text-align: center;
   background: #e1d6d6;
   width: 100%;
-  max-width: 1256px;
   margin: 5px;
   padding: 15px;
   height: 40px;
   max-height: 40px;
+  max-width: 76%;
 }
 
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-container>div {
   background-color: #f1f1f1;
-  width: 175px;
+  justify-content: space-between;
+  width: 200px;
   margin: 5px;
   text-align: center;
+  position: relative;
   #line-height: 75px;
 }
 
@@ -40,7 +44,7 @@ h1 {
 
 #weeks>div>div {
   border-radius: 15%;
-  height: 150px;
+  height: 180px;
   padding: 5px 0;
 }
 
@@ -50,6 +54,7 @@ h1 {
 }
 
 .event {
+  #height: auto;
   height: 3em;
   padding: 2%;
   overflow: auto;
