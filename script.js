@@ -5,7 +5,9 @@ let addEvent = (day) => {
     if (event) {
       let newEvent = document.createElement("div");
       newEvent.classList.add('event');
-      newEvent.innerHTML = event;
+      var par = document.createElement("span");
+      par.innerHTML = event;
+      newEvent.appendChild(par);
       newEvent.addEventListener('click', function(e) {
         deleteEvent(this);
         e.stopPropagation();
