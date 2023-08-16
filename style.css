@@ -9,14 +9,13 @@ form {
 }
 
 h1 {
+  display: inline-block;
+  width: 99%;
   text-align: center;
   background: #e1d6d6;
-  width: 100%;
   margin: 5px;
   padding: 15px;
-  height: 40px;
   max-height: 40px;
-  max-width: 76%;
 }
 
 .flex-container {
@@ -24,16 +23,15 @@ h1 {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  max-width: 99%;
 }
 
 .flex-container>div {
   background-color: #f1f1f1;
-  justify-content: space-between;
-  width: 200px;
   margin: 5px;
   text-align: center;
-  position: relative;
-  #line-height: 75px;
+  flex-basis: 200px;
+  min-width: 50px;
 }
 
 #weekdays>div {
@@ -48,16 +46,23 @@ h1 {
   padding: 5px 0;
 }
 
-#weeks>div>div:hover {
+.day:hover {
   background-color: lightgrey;
   font-weight: bold;
 }
 
 .event {
-  #height: auto;
-  height: 3em;
-  padding: 2%;
+  height: auto;
   overflow: auto;
+  max-width: 200px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.event span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 .event:hover {
