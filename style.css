@@ -1,9 +1,9 @@
 body {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Roboto', serif;
 }
 
 form {
-  border: 1px solid black;
+  text-align: center;
   padding: .5%;
   margin: .5%;
 }
@@ -12,9 +12,9 @@ h1 {
   display: inline-block;
   width: 99%;
   text-align: center;
-  background: #e1d6d6;
+  border-bottom: 1px solid #f1f1f1;
   margin: 5px;
-  padding: 15px;
+  padding: 10px;
   max-height: 40px;
 }
 
@@ -27,36 +27,38 @@ h1 {
 }
 
 .flex-container>div {
-  background-color: #f1f1f1;
   margin: 5px;
   text-align: center;
-  flex-basis: 200px;
-  min-width: 50px;
+  flex-basis: 250px;
+  min-width: 100px;
 }
 
 #weekdays>div {
   font-weight: bold;
   line-height: 50px;
-  font-size: 80%;
 }
 
-#weeks>div>div {
+.day {
   border-radius: 15%;
-  height: 180px;
+  height: 200px;
   padding: 5px 0;
+  background-color: #f1f1f1;
 }
 
 .day:hover {
-  background-color: lightgrey;
+  background-color: #d9d9d9;
   font-weight: bold;
 }
 
 .event {
   height: auto;
   overflow: auto;
-  max-width: 200px;
+  max-width: 250px;
   height: 50px;
   line-height: 50px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  margin-top: -1px;
 }
 
 .event span {
@@ -66,5 +68,8 @@ h1 {
 }
 
 .event:hover {
-  background-color: #f1f1f1;
+  background-color: #f4cccc;
+  font-style: italic;
+  cursor: pointer;
+  border: 1px solid #f4cccc;
 }
