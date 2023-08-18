@@ -43,22 +43,22 @@ h1 {
   height: 200px;
   padding: 5px 0;
   background-color: #f1f1f1;
+  transition: background-color 1s;
 }
 
 .day:hover {
   background-color: #d9d9d9;
-  font-weight: bold;
 }
 
 .event {
   height: auto;
-  overflow: auto;
+  overflow: clip;
   max-width: 250px;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  margin-top: -1px;
+  margin-bottom: -1px;
 }
 
 .event span {
@@ -69,7 +69,6 @@ h1 {
 
 .event:hover {
   background-color: #f4cccc;
-  font-style: italic;
   cursor: pointer;
-  border: 1px solid #f4cccc;
+  font-weight: bold;
 }
