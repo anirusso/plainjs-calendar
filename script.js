@@ -1,34 +1,41 @@
-let addEvent = (day) => {
+let clickAdd = (day) => {
   let num = day.childElementCount
   if (num <= 2) {
     let event = prompt("Enter event for the day: ");
     if (event) {
-      let newEvent = document.createElement("div");
-      newEvent.classList.add('event');
-      var par = document.createElement("span");
-      par.innerHTML = event;
-      newEvent.appendChild(par);
-      newEvent.addEventListener('click', function(e) {
-        deleteEvent(this);
-        e.stopPropagation();
-      });
-      day.appendChild(newEvent);
+		addEvent(day, event, num);
     }
   }
 }
 
-let deleteEvent = (day) => {
+let addEvent = (day, event, num) => {
+      let newEvent = document.createElement("div");
+      newEvent.classList.add('event');
+      let par = document.createElement("span");
+      let content = document.createTextNode(event);
+      par.appendChild(content);
+      newEvent.appendChild(par);
+      newEvent.addEventListener('click', function(e) {
+        deleteEvent(this, day, num);
+        e.stopPropagation();
+      });
+      day.appendChild(newEvent);
+	  localStorage.setItem(day.className+num, event);
+}
+
+let deleteEvent = (event, parent, num) => {
   let del = confirm("Delete event?");
   if (del) {
-    day.remove();
+    event.remove();
+	localStorage.removeItem(parent.className+num);
   }
 }
 
 //create dropdown list of months
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var select = document.getElementById("selectMonth");
+let select = document.getElementById("selectMonth");
 months.forEach(function (item, index) {
-  var opt = document.createElement("option");
+  let opt = document.createElement("option");
   opt.textContent = item;
   opt.value = item;
   select.appendChild(opt);
@@ -65,9 +72,19 @@ field.addEventListener('change', function () {
     if (i >= firstDay) {
       var num = document.createElement("p");
       num.innerHTML = day;
-      day++;
       square.appendChild(num);
       square.classList.add('day');
+	  square.classList.add(day+month);
+	  //check if event exists
+	  let event1 = localStorage.getItem("day "+day+month+"1");
+	  let event2 = localStorage.getItem("day "+day+month+"2");
+	  if (event1) {
+		  addEvent(square, event1, 1);
+	  }
+	  else if (event2) {
+		  addEvent(square, event1, 2);
+	  }
+ 	  day++;
     }
     else {
       square.innerHTML = "";
@@ -86,7 +103,7 @@ field.addEventListener('change', function () {
   let days = document.getElementsByClassName("day");
   for (let day of days) {
     day.addEventListener('click', function(e) {
-      addEvent(this);
+      clickAdd(this);
     });
   }
 });
