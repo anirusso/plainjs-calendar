@@ -81,8 +81,8 @@ field.addEventListener('change', function () {
 	  if (event1) {
 		  addEvent(square, event1, 1);
 	  }
-	  else if (event2) {
-		  addEvent(square, event1, 2);
+	  if (event2) {
+		  addEvent(square, event2, 2);
 	  }
  	  day++;
     }
